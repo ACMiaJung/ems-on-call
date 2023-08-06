@@ -93,6 +93,7 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -224,6 +225,33 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EntityModel\acemsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>acemsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityModel\acemsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>acemsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityModel\acemsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>acemsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityModel\AspNetRole.cs">
+      <DependentUpon>acemsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityModel\AspNetUser.cs">
+      <DependentUpon>acemsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityModel\AspNetUserClaim.cs">
+      <DependentUpon>acemsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityModel\AspNetUserLogin.cs">
+      <DependentUpon>acemsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeViewModels.cs" />
@@ -254,6 +282,16 @@
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Models\EntityModel\acemsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>acemsModel.edmx</DependentUpon>
+      <LastGenOutput>acemsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EntityModel\acemsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>acemsModel.edmx</DependentUpon>
+      <LastGenOutput>acemsModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\app\_run.js" />
     <Content Include="Scripts\app\app.datamodel.js" />
     <Content Include="Scripts\app\app.viewmodel.js" />
@@ -284,6 +322,13 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <EntityDeploy Include="Models\EntityModel\acemsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>acemsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EntityModel\acemsModel.edmx.diagram">
+      <DependentUpon>acemsModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -408,6 +453,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

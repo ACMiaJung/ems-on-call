@@ -27,6 +27,6 @@ function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
     window.open = cordova.InAppBrowser.open;
-    window.open('https://www.amherst.edu/campuslife/health-safety-wellness/health-service/acems', null, 'location=no');
+    window.open('https://acems.jandslab.com', null, 'location=no');
 
 }
