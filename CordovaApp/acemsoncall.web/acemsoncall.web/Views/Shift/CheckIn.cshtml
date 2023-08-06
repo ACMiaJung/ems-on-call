@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity
+@using acemsoncall.web.Models.EntityModel
+
+@{
+    ViewBag.Title = "Shift Check in";
+    string _userId = User.Identity.GetUserId();
+    string MemberName;
+    using (acemsEntities db = new acemsEntities())
+    {
+        var user = db.AspNetUsers.FirstOrDefault(u => u.Id == _userId);
+        MemberName = user == null ? string.Empty : user.MemberName;
+        <main aria-labelledby="title">
+            <h2 id="title">@ViewBag.Title.</h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <section id="loginForm">
+                        @using (Html.BeginForm("CheckIn", "Shift", null, FormMethod.Post, new { role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <h4>Check In For Your Shift.</h4>
+                            <hr />
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">Member Name</label>
+                                <div class="col-md-10">
+                                    <input name="membername" class="form-control" readonly value="@MemberName" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">Medical Rank</label>
+                                <div class="col-md-10">
+                                    <select class="form-control" name="medicalrank">
+                                        <option value="Med-13">Med-13</option>
+                                        <option value="Med-12" @(u) selected>Med-12</option>
+                                        <option value="Med-10">Med-10</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="offset-md-2 col-md-10">
+                                    <input type="submit" value="Check in" class="btn btn-outline-dark" />
+                                </div>
+                            </div>
+                        }
+                    </section>
+                </div>
+            </div>
+        </main>
+    }
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

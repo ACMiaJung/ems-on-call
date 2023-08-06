@@ -35,6 +35,9 @@ namespace acemsoncall.web.Models.EntityModel
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
+        public string MedicalRank { get; set; }
+        public bool IsCheckedIn { get; set; }
+        public Nullable<System.DateTime> CheckedInDT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
