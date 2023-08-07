@@ -3,7 +3,6 @@
 @model EMSContent
 @{
     ViewBag.Title = "content editor";
-    <h2>@ViewBag.Title</h2>
     string _userId = User.Identity.GetUserId();
     string MemberName;
 
@@ -42,11 +41,21 @@
                                         <option value="Inforation Lookup" @(eMSContent.contenttype == "Information Lookup" ? "selected" : string.Empty)>Information Lookup</option>
                                     </select>
                                 </div>
-                            </div>                         
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 col-form-label">Content</label>
+                                <div class="col-md-10">
+                                    <textarea name="content" class="ckeditor" style="min-height:200px;"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                Image: <input type="file" id="postcontentfile" name="ufile" onchange="insertImageToCK(event, 'content', 'postcontentfile');" accept=".jpg, .jpeg, .png" />
+                        </div>
+                            <div class="row">&nbsp;</div>
                             <div class="row">
                                 <div class="offset-md-2 col-md-10">
-                                    <input type="submit" value="Submit" class="btn btn-primary" @(user.IsCheckedIn ? "disabled" : string.Empty) />
-                                    <input type="submit" value="Cancel" class="btn btn-danger" @(user.IsCheckedIn == false ? "disabled" : string.Empty) />
+                                    <input type="submit" value="Submit" class="btn btn-primary" />
+                                    <input type="submit" value="Cancel" class="btn btn-danger" />
                                 </div>
                             </div>
                         }
@@ -54,6 +63,9 @@
                 </div>
             </div>
         </main>
-        }
-
     }
+
+}
+@section scripts {
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    } 
