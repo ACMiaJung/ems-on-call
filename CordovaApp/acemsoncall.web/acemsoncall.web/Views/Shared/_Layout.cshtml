@@ -19,11 +19,15 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link text-uppercase" })</li>
-                    <li><a href="#" class="nav-link">CHECK IN</a></li>
-                    <li><a href="#" class="nav-link">BAG CHECK</a></li>
+                    <li><a href="/shift/checkin" class="nav-link">CHECK IN</a></li>
+                    <li><a href="/shift" class="nav-link">WHO'S CHECKED IN</a></li>
+                    <li><a href="/shift/bagcheck" class="nav-link">BAG CHECK</a></li>
                     <li><a href="#" class="nav-link">LOCATION LOOK UP</a></li>
-                    <li><a href="#" class="nav-link">WHO'S CHECKED IN</a></li>
                     <li><a href="#" class="nav-link">INFO LOOK UP</a></li>
+                    @if (User.IsInRole("admin"))
+            {
+                <li><a href="/admin" class="nav-link">ADMIN CONSOLE</a></li>
+            }
                     @*<li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, new { @class = "nav-link" })</li>*@
                 </ul>
                 @Html.Partial("_LoginPartial")

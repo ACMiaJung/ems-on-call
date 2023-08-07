@@ -12,6 +12,9 @@
         <AssociationConnector Association="acemsModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="acemsModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="acemsModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="acemsModel.EMSContent" Width="1.5" PointX="5.25" PointY="6.25" />
+        <AssociationConnector Association="acemsModel.FK_EMSContent_AspNetUsers_registid" />
+        <AssociationConnector Association="acemsModel.FK_EMSContent_AspNetUsers_updateid" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

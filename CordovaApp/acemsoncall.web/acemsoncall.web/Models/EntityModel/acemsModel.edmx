@@ -60,6 +60,19 @@
           <Property Name="IsCheckedIn" Type="bit" Nullable="false" />
           <Property Name="CheckedInDT" Type="datetime" />
         </EntityType>
+        <EntityType Name="EMSContent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contenttype" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="registid" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="registdt" Type="datetime" Nullable="false" />
+          <Property Name="updateid" Type="nvarchar" MaxLength="128" />
+          <Property Name="updatedt" Type="datetime" />
+        </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -116,12 +129,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EMSContent_AspNetUsers_registid">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="EMSContent" Type="Self.EMSContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMSContent">
+              <PropertyRef Name="registid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMSContent_AspNetUsers_updateid">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="EMSContent" Type="Self.EMSContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMSContent">
+              <PropertyRef Name="updateid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="acemsModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMSContent" EntityType="Self.EMSContent" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -137,6 +175,14 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMSContent_AspNetUsers_registid" Association="Self.FK_EMSContent_AspNetUsers_registid">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="EMSContent" EntitySet="EMSContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMSContent_AspNetUsers_updateid" Association="Self.FK_EMSContent_AspNetUsers_updateid">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="EMSContent" EntitySet="EMSContent" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -195,6 +241,8 @@
           <Property Name="MedicalRank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsCheckedIn" Type="Boolean" Nullable="false" />
           <Property Name="CheckedInDT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EMSContents" Relationship="acemsModel.FK_EMSContent_AspNetUsers_registid" FromRole="AspNetUser" ToRole="EMSContent" />
+          <NavigationProperty Name="EMSContents1" Relationship="acemsModel.FK_EMSContent_AspNetUsers_updateid" FromRole="AspNetUser" ToRole="EMSContent" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -245,7 +293,55 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="EMSContents" EntityType="acemsModel.EMSContent" />
+          <AssociationSet Name="FK_EMSContent_AspNetUsers_registid" Association="acemsModel.FK_EMSContent_AspNetUsers_registid">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="EMSContent" EntitySet="EMSContents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMSContent_AspNetUsers_updateid" Association="acemsModel.FK_EMSContent_AspNetUsers_updateid">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="EMSContent" EntitySet="EMSContents" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="EMSContent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contenttype" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="registid" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="registdt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updateid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="updatedt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUser" Relationship="acemsModel.FK_EMSContent_AspNetUsers_registid" FromRole="EMSContent" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser1" Relationship="acemsModel.FK_EMSContent_AspNetUsers_updateid" FromRole="EMSContent" ToRole="AspNetUser" />
+        </EntityType>
+        <Association Name="FK_EMSContent_AspNetUsers_registid">
+          <End Type="acemsModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="acemsModel.EMSContent" Role="EMSContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMSContent">
+              <PropertyRef Name="registid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMSContent_AspNetUsers_updateid">
+          <End Type="acemsModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="acemsModel.EMSContent" Role="EMSContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMSContent">
+              <PropertyRef Name="updateid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -309,6 +405,20 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="EMSContents">
+            <EntityTypeMapping TypeName="acemsModel.EMSContent">
+              <MappingFragment StoreEntitySet="EMSContent">
+                <ScalarProperty Name="updatedt" ColumnName="updatedt" />
+                <ScalarProperty Name="updateid" ColumnName="updateid" />
+                <ScalarProperty Name="registdt" ColumnName="registdt" />
+                <ScalarProperty Name="registid" ColumnName="registid" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="contenttype" ColumnName="contenttype" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

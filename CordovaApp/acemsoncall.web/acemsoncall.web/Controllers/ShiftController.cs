@@ -14,7 +14,12 @@ namespace acemsoncall.web.Controllers
         // GET: Shift
         public ActionResult Index()
         {
-            return View();
+            List<AspNetUser> checkedinPersons = new List<AspNetUser>();
+            using (acemsEntities db = new acemsEntities())
+            {
+                checkedinPersons = db.AspNetUsers.Where(u=>u.IsCheckedIn == true).ToList();
+            }
+            return View(checkedinPersons);
         }
         [HttpGet]
         public ActionResult CheckIn()
@@ -22,7 +27,7 @@ namespace acemsoncall.web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CheckIn(string MedicalRank)
+        public ActionResult CheckIn(string MedicalRank, bool? IsCheckedIn)
         {
             using(acemsEntities db = new acemsEntities())
             {
@@ -36,11 +41,20 @@ namespace acemsoncall.web.Controllers
                         sameUser.IsCheckedIn = false;
                     }
                     user.MedicalRank = MedicalRank;
-                    user.IsCheckedIn = true;
-                    user.CheckedInDT = DateTime.Now;
+                    user.IsCheckedIn = IsCheckedIn.HasValue?IsCheckedIn.Value:false;
+                    if (IsCheckedIn.HasValue && IsCheckedIn.Value == true)
+                    {
+                        user.CheckedInDT = DateTime.Now;
+                    }
                     db.SaveChanges();
+                    ViewBag.Message = $"Successfully checked {(IsCheckedIn.HasValue&&IsCheckedIn.Value?"in":"out")}.";
                 }
             }
+            return View();
+        }
+
+        public ActionResult BagCheck()
+        {
             return View();
         }
     }
