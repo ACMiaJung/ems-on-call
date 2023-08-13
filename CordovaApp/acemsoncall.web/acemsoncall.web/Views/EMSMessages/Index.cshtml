@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<acemsoncall.web.Models.EntityModel.EMSMessage>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sent";
 }
 
-<h2>Messages</h2>
+<h2>@ViewBag.Title</h2>
 <div class="row">&nbsp;</div>
 
 
@@ -14,17 +14,14 @@
 
 <table class="table">
     <tr>
-        <th>
-            Message Title
-        </th>
-        <th>
-            Time Sent
-        </th>
-        <th>
-            From
+        <th style="width:70%;">
+            Title
         </th>
         <th>
             To
+        </th>
+        <th>
+            Time
         </th>
         <th></th>
     </tr>
@@ -34,20 +31,15 @@
         <tr>
             <td>
                 <a href="/EMSMessages/Details/@item.id">@item.MessageTitle</a>
-                @* @Html.ActionLink(item.MessageTitle, "Details", new { id = item.id }) *@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MessageTimeSent)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser.MemberName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AspNetUser1.MemberName)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @(item.MessageTimeSent.Date == DateTime.Now.Date? item.MessageTimeSent.ToString("HH:mm") : item.MessageTimeSent.ToString("MM/dd"))
+            </td>
+            <td>
+                @Html.ActionLink("🗑️", "Delete", new { id = item.id })
             </td>
         </tr>
     }
