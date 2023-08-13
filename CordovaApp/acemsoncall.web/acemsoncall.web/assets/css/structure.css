@@ -790,7 +790,7 @@ code {
   .sidebar-wrapper .profile-info figure {
     width: 100%;
     height: 82px;
-    background: url("../img/255x255.jpg") center center/cover no-repeat;
+    background: url("../img/acems-logo-2.png") center center/cover no-repeat;
     margin-bottom: 0; }
   .sidebar-wrapper .profile-info .user-info {
     text-align: center;
@@ -1381,3 +1381,37 @@ code {
     display: none; }
   .footer-wrapper .footer-section.f-section-2 {
     display: none; } }
+/* Common styles for all buttons */
+.my_button {
+    padding: 70px;
+    width: 320px;
+    height: 160px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #6a82bc;
+    color: #fff;
+}
+
+.med10button {
+    background-color: #c3cde4;
+}
+
+.med12button {
+    background-color: #96a7d0;
+}
+
+.med13button {
+    background-color: #6a82bc;
+}
+
+    /* Hover effect for all buttons */
+    .my_button:hover {
+        background-color: #a2b1d5;
+        color: #fff;
+    }

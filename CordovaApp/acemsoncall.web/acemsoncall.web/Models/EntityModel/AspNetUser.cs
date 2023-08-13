@@ -22,6 +22,8 @@ namespace acemsoncall.web.Models.EntityModel
             this.AspNetRoles = new HashSet<AspNetRole>();
             this.EMSContents = new HashSet<EMSContent>();
             this.EMSContents1 = new HashSet<EMSContent>();
+            this.EMSMessages = new HashSet<EMSMessage>();
+            this.EMSMessages1 = new HashSet<EMSMessage>();
         }
     
         public string Id { get; set; }
@@ -51,5 +53,9 @@ namespace acemsoncall.web.Models.EntityModel
         public virtual ICollection<EMSContent> EMSContents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EMSContent> EMSContents1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EMSMessage> EMSMessages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EMSMessage> EMSMessages1 { get; set; }
     }
 }

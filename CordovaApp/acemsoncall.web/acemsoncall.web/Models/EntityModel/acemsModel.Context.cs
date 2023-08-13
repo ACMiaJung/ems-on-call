@@ -30,5 +30,6 @@ namespace acemsoncall.web.Models.EntityModel
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<EMSContent> EMSContents { get; set; }
+        public virtual DbSet<EMSMessage> EMSMessages { get; set; }
     }
 }

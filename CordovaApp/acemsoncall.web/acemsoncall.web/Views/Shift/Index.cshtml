@@ -4,15 +4,18 @@
     ViewBag.Title = "WHO'S CHECKED IN";
 }
 
-<h2>@ViewBag.Title</h2>
+=    <h2>@ViewBag.Title</h2>
+<br />
 <ul>
-    @if (Model.Count==0)
-            {
-                <li>Nobody is checked in at the moment.</li>
-            }
-    @foreach(var person in Model)
-            {
-                <li>@person.MemberName - @person.MedicalRank - @person.CheckedInDT.Value.ToLocalTime()</li>
-            }
+    @if (Model.Count == 0)
+    {
+        <li>Nobody is checked in at the moment.</li>
+    }
+    @foreach (var person in Model)
+    {
+        <li>@person.MemberName - @person.MedicalRank - @person.CheckedInDT.Value.ToLocalTime()</li>
+    }
 </ul>
+
+
 

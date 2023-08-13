@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="acemsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EMSMessage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MessageFrom" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="MessageTo" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="MessageTitle" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="MessageText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MessageTimeSent" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -153,7 +164,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EMSMessage_EMSMessage_FROM">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="EMSMessage" Type="Self.EMSMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMSMessage">
+              <PropertyRef Name="MessageFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMSMessage_EMSMessage_TO">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="EMSMessage" Type="Self.EMSMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMSMessage">
+              <PropertyRef Name="MessageTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="acemsModelStoreContainer">
+          <EntitySet Name="EMSMessage" EntityType="Self.EMSMessage" Schema="acems" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
@@ -183,6 +219,14 @@
           <AssociationSet Name="FK_EMSContent_AspNetUsers_updateid" Association="Self.FK_EMSContent_AspNetUsers_updateid">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="EMSContent" EntitySet="EMSContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMSMessage_EMSMessage_FROM" Association="Self.FK_EMSMessage_EMSMessage_FROM">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="EMSMessage" EntitySet="EMSMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMSMessage_EMSMessage_TO" Association="Self.FK_EMSMessage_EMSMessage_TO">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="EMSMessage" EntitySet="EMSMessage" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -243,7 +287,9 @@
           <Property Name="CheckedInDT" Type="DateTime" Precision="3" />
           <NavigationProperty Name="EMSContents" Relationship="acemsModel.FK_EMSContent_AspNetUsers_registid" FromRole="AspNetUser" ToRole="EMSContent" />
           <NavigationProperty Name="EMSContents1" Relationship="acemsModel.FK_EMSContent_AspNetUsers_updateid" FromRole="AspNetUser" ToRole="EMSContent" />
-        </EntityType>
+          <NavigationProperty Name="EMSMessages" Relationship="acemsModel.FK_EMSMessage_EMSMessage_FROM" FromRole="AspNetUser" ToRole="EMSMessage" />
+          <NavigationProperty Name="EMSMessages1" Relationship="acemsModel.FK_EMSMessage_EMSMessage_TO" FromRole="AspNetUser" ToRole="EMSMessage" />
+          </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -302,7 +348,16 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="EMSContent" EntitySet="EMSContents" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="EMSMessages" EntityType="acemsModel.EMSMessage" />
+          <AssociationSet Name="FK_EMSMessage_EMSMessage_FROM" Association="acemsModel.FK_EMSMessage_EMSMessage_FROM">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="EMSMessage" EntitySet="EMSMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMSMessage_EMSMessage_TO" Association="acemsModel.FK_EMSMessage_EMSMessage_TO">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="EMSMessage" EntitySet="EMSMessages" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="EMSContent">
           <Key>
             <PropertyRef Name="id" />
@@ -342,7 +397,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="EMSMessage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MessageFrom" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="MessageTo" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="MessageTitle" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MessageText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MessageTimeSent" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AspNetUser" Relationship="acemsModel.FK_EMSMessage_EMSMessage_FROM" FromRole="EMSMessage" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser1" Relationship="acemsModel.FK_EMSMessage_EMSMessage_TO" FromRole="EMSMessage" ToRole="AspNetUser" />
+        </EntityType>
+        <Association Name="FK_EMSMessage_EMSMessage_FROM">
+          <End Type="acemsModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="acemsModel.EMSMessage" Role="EMSMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMSMessage">
+              <PropertyRef Name="MessageFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMSMessage_EMSMessage_TO">
+          <End Type="acemsModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="acemsModel.EMSMessage" Role="EMSMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMSMessage">
+              <PropertyRef Name="MessageTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -415,6 +507,18 @@
                 <ScalarProperty Name="content" ColumnName="content" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="contenttype" ColumnName="contenttype" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMSMessages">
+            <EntityTypeMapping TypeName="acemsModel.EMSMessage">
+              <MappingFragment StoreEntitySet="EMSMessage">
+                <ScalarProperty Name="MessageTimeSent" ColumnName="MessageTimeSent" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="MessageTitle" ColumnName="MessageTitle" />
+                <ScalarProperty Name="MessageTo" ColumnName="MessageTo" />
+                <ScalarProperty Name="MessageFrom" ColumnName="MessageFrom" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

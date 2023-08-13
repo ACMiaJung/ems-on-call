@@ -638,7 +638,7 @@ select.form-control.form-custom {
   background-color: #1b55e2 !important;
   border-color: #1b55e2; }
   .btn-primary:hover, .btn-primary:focus {
-    color: #fff !important;
+    color: lightgray !important;
     background-color: #1b55e2;
     box-shadow: none;
     border-color: #1b55e2; }
@@ -646,6 +646,7 @@ select.form-control.form-custom {
     background-color: #1b55e2;
     border-top: 1px solid #1b55e2; }
   .btn-primary.disabled, .btn-primary.btn[disabled], .btn-primary:disabled {
+    color: #000 !important;
     background-color: #1b55e2;
     border-color: #1b55e2;
     -webkit-box-shadow: none;
@@ -708,6 +709,7 @@ select.form-control.form-custom {
   border-color: #5c1ac3; }
 
 .btn-secondary.disabled, .btn-secondary.btn[disabled], .btn-secondary:disabled {
+  color: #000 !important;
   background-color: #5c1ac3;
   border-color: #5c1ac3;
   -webkit-box-shadow: none;
@@ -850,6 +852,7 @@ select.form-control.form-custom {
   border-color: #e7515a; }
 
 .btn-danger.disabled, .btn-danger.btn[disabled], .btn-danger:disabled {
+  color: #000 !important;
   background-color: #e7515a;
   border-color: #e7515a;
   -webkit-box-shadow: none;

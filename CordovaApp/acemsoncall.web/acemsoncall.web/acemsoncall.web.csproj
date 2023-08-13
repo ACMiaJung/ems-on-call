@@ -219,6 +219,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\EMSMessagesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
@@ -257,6 +258,9 @@
     <Compile Include="Models\EntityModel\EMSContent.cs">
       <DependentUpon>acemsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EntityModel\EMSMessage.cs">
+      <DependentUpon>acemsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeViewModels.cs" />
@@ -266,6 +270,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="2nd-level.html" />
+    <Content Include="3rd-level.html" />
+    <Content Include="4th-level.html" />
+    <Content Include="4th-level2.html" />
     <Content Include="apps_calendar.html" />
     <Content Include="apps_chat.html" />
     <Content Include="apps_contacts.html" />
@@ -407,6 +415,10 @@
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\popper.min.js" />
+    <Content Include="calendar.html" />
+    <Content Include="charts-flot.html" />
+    <Content Include="charts-others.html" />
+    <Content Include="charts-xcharts.html" />
     <Content Include="charts_apex.html" />
     <Content Include="component_accordion.html" />
     <Content Include="component_blockui.html" />
@@ -463,6 +475,10 @@
     <Content Include="favicon.ico" />
     <Content Include="fonticons.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="form-dropzone.html" />
+    <Content Include="form-elements.html" />
+    <Content Include="form-wizard.html" />
+    <Content Include="form-x-editable.html" />
     <Content Include="form_bootstrap_basic.html" />
     <Content Include="form_bootstrap_select.html" />
     <Content Include="form_bootstrap_touchspin.html" />
@@ -481,9 +497,15 @@
     <Content Include="form_typeahead.html" />
     <Content Include="form_validation.html" />
     <Content Include="form_wizard.html" />
+    <Content Include="gallery.html" />
     <Content Include="Global.asax" />
+    <Content Include="icons-climacons.html" />
+    <Content Include="icons-glyphicons-pro.html" />
+    <Content Include="icons-simple-line-icons.html" />
+    <Content Include="icons-social.html" />
     <Content Include="images\loginbg.gif" />
     <Content Include="images\main_logo.png" />
+    <Content Include="layout.html" />
     <Content Include="index.html" />
     <Content Include="index2.html" />
     <Content Include="map_jvector.html" />
@@ -497,6 +519,9 @@
       <DependentUpon>acemsModel.edmx</DependentUpon>
       <LastGenOutput>acemsModel.cs</LastGenOutput>
     </Content>
+    <Content Include="page-404.html" />
+    <Content Include="page-inbox-compose.html" />
+    <Content Include="page-lockscreen.html" />
     <Content Include="pages_coming_soon.html" />
     <Content Include="pages_contact_us.html" />
     <Content Include="pages_error404.html" />
@@ -1052,6 +1077,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="table.html" />
     <Content Include="widgets.html" />
     <EntityDeploy Include="Models\EntityModel\acemsModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -1631,10 +1657,14 @@
     <Content Include="Views\Shift\BagCheck.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\EMSMessages\Create.cshtml" />
+    <Content Include="Views\EMSMessages\Delete.cshtml" />
+    <Content Include="Views\EMSMessages\Details.cshtml" />
+    <Content Include="Views\EMSMessages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\EntityModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\bootstrap.min.js.map" />
