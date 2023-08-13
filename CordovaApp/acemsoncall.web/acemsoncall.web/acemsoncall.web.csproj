@@ -219,6 +219,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\EMSContentsController.cs" />
     <Compile Include="Controllers\EMSMessagesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1662,6 +1663,11 @@
     <Content Include="Views\EMSMessages\Delete.cshtml" />
     <Content Include="Views\EMSMessages\Details.cshtml" />
     <Content Include="Views\EMSMessages\Index.cshtml" />
+    <Content Include="Views\EMSContents\Create.cshtml" />
+    <Content Include="Views\EMSContents\Delete.cshtml" />
+    <Content Include="Views\EMSContents\Details.cshtml" />
+    <Content Include="Views\EMSContents\Edit.cshtml" />
+    <Content Include="Views\EMSContents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

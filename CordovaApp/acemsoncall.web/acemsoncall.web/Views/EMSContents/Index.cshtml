@@ -1,0 +1,51 @@
+﻿@model IEnumerable<acemsoncall.web.Models.EntityModel.EMSContent>
+
+@{
+    ViewBag.Title = "EMSContents";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th style="width:70%;">
+            Title
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            Last Updated
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contenttype)
+        </td>
+        <td>
+            if (modelItem => item.updatedt == null){
+            @Html.DisplayFor(modelItem => item.registdt)
+            }
+            else{
+            @Html.DisplayFor(modelItem => item.updatedt)
+
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+        </td>
+    </tr>
+}
+
+</table>
