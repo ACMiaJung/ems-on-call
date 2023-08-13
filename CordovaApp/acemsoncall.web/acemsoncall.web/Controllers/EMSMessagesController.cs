@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using acemsoncall.web.Models.EntityModel;
+using Microsoft.AspNet.Identity;
 
 namespace acemsoncall.web.Controllers
 {
@@ -15,11 +16,29 @@ namespace acemsoncall.web.Controllers
         private acemsEntities db = new acemsEntities();
 
         // GET: EMSMessages
-        public ActionResult Index()
+        public ActionResult Index(string s)
         {
-            var eMSMessages = db.EMSMessages.Include(e => e.AspNetUser).Include(e => e.AspNetUser1);
+            string _userid = User.Identity.GetUserId();
+            var eMSMessages = db.EMSMessages.Where(m => m.MessageTo == _userid);
+            if (string.IsNullOrEmpty(s) == false)
+            {
+                eMSMessages = eMSMessages.Where(m => m.MessageTitle.IndexOf(s) >= 0);
+            }
+            eMSMessages = eMSMessages.OrderByDescending(m => m.MessageTimeSent).Include(e => e.AspNetUser).Include(e => e.AspNetUser1);
             return View(eMSMessages.ToList());
         }
+        public ActionResult Sent(string s)
+        {
+            string _userid = User.Identity.GetUserId();
+            var eMSMessages = db.EMSMessages.Where(m => m.MessageFrom == _userid);
+            if (string.IsNullOrEmpty(s) == false)
+            {
+                eMSMessages = eMSMessages.Where(m => m.MessageTitle.IndexOf(s) >= 0);
+            }
+            eMSMessages = eMSMessages.OrderByDescending(m => m.MessageTimeSent).Include(e => e.AspNetUser).Include(e => e.AspNetUser1);
+            return View(eMSMessages.ToList());
+        }
+
 
         // GET: EMSMessages/Details/5
         public ActionResult Details(int? id)
@@ -57,7 +76,7 @@ namespace acemsoncall.web.Controllers
             {
                 db.EMSMessages.Add(eMSMessage);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Sent");
             }
 
             ViewBag.MessageFrom = new SelectList(db.AspNetUsers, "Id", "MemberName", eMSMessage.MessageFrom);

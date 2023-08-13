@@ -437,6 +437,7 @@
     <Content Include="component_sweetalert.html" />
     <Content Include="component_tabs.html" />
     <Content Include="component_timeline.html" />
+    <Content Include="Content\acemsoncall.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -1663,6 +1664,7 @@
     <Content Include="Views\EMSMessages\Delete.cshtml" />
     <Content Include="Views\EMSMessages\Details.cshtml" />
     <Content Include="Views\EMSMessages\Index.cshtml" />
+    <Content Include="Views\EMSMessages\Sent.cshtml" />
     <Content Include="Views\EMSContents\Create.cshtml" />
     <Content Include="Views\EMSContents\Delete.cshtml" />
     <Content Include="Views\EMSContents\Details.cshtml" />

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<acemsoncall.web.Models.EntityModel.EMSMessage>
 
 @{
-    ViewBag.Title = "Inbox";
+    ViewBag.Title = "Sent";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -11,7 +11,7 @@
 <div class="text-right">
     <div class="inlineblock">
         <form action="?" method="get">
-            <input type="text" name="s" class="form-control-sm" /><button>Search</button>
+        <input type="text" name="s" class="form-control-sm" /><button>Search</button>
         </form>
     </div>
     <a href="/emsmessages/create" class="btn btn-primary">Compose</a>
@@ -23,7 +23,7 @@
             Title
         </th>
         <th>
-            From
+            To
         </th>
         <th>
             Time
@@ -38,7 +38,7 @@
                 <a href="/EMSMessages/Details/@item.id">@item.MessageTitle</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser.MemberName)
+                @Html.DisplayFor(modelItem => item.AspNetUser1.MemberName)
             </td>
             <td>
                 @(item.MessageTimeSent.Date == DateTime.Now.Date? item.MessageTimeSent.ToString("HH:mm") : item.MessageTimeSent.ToString("MM/dd"))

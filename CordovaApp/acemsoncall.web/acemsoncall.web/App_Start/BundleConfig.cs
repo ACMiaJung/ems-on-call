@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Optimization;
+using System.Web.UI.WebControls;
 
 namespace acemsoncall.web
 {
@@ -39,6 +40,7 @@ namespace acemsoncall.web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
+                 "~/Content/acemsoncall.css",
                  "~/Content/Site.css"));
         }
     }
