@@ -48,16 +48,11 @@ namespace acemsoncall.web.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,contenttype,title,content,registid,registdt,updateid,updatedt")] EMSContent eMSContent)
         {
-            if (eMSContent.registdt == null)
-            {
-                eMSContent.registdt = DateTime.Now;
-            }
-            else {
-                eMSContent.updatedt = DateTime.Now;
-            }
+            eMSContent.registdt = DateTime.Now;
 
             if (ModelState.IsValid)
             {

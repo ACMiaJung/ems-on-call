@@ -23,27 +23,30 @@
         <th></th>
     </tr>
 
+    @{
+   
+    }
+
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.title)
+            <a href="/EMSContents/Details/@item.id">@item.title</a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.contenttype)
         </td>
         <td>
-            if (modelItem => item.updatedt == null){
-            @Html.DisplayFor(modelItem => item.registdt)
+            @if (item.updatedt == null){
+                @item.registdt.ToString("MM/dd/yy")
             }
             else{
-            @Html.DisplayFor(modelItem => item.updatedt)
-
+                @item.updatedt.Value.ToString("MM/dd/yy")
             }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
             @Html.ActionLink("Details", "Details", new { id = item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            @Html.ActionLink("🗑️", "Delete", new { id = item.id })
         </td>
     </tr>
 }
