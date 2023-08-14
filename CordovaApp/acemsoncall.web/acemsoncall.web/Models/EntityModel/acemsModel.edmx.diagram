@@ -18,6 +18,8 @@
         <EntityTypeShape EntityType="acemsModel.EMSMessage" Width="1.5" PointX="5.25" PointY="10.75" />
         <AssociationConnector Association="acemsModel.FK_EMSMessage_EMSMessage_FROM" />
         <AssociationConnector Association="acemsModel.FK_EMSMessage_EMSMessage_TO" />
+        <EntityTypeShape EntityType="acemsModel.ContentType" Width="1.5" PointX="7.375" PointY="0.875" />
+        <AssociationConnector Association="acemsModel.FK_EMSContent_ContentType" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

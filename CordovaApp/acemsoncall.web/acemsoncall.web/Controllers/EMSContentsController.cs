@@ -44,6 +44,7 @@ namespace acemsoncall.web.Controllers
         {
             ViewBag.registid = new SelectList(db.AspNetUsers, "Id", "MemberName");
             ViewBag.updateid = new SelectList(db.AspNetUsers, "Id", "MemberName");
+            ViewBag.contenttype = new SelectList(db.ContentTypes, "ContentType1", "ContentType1");
             return View();
         }
 
@@ -66,6 +67,7 @@ namespace acemsoncall.web.Controllers
 
             ViewBag.registid = new SelectList(db.AspNetUsers, "Id", "MemberName", eMSContent.registid);
             ViewBag.updateid = new SelectList(db.AspNetUsers, "Id", "MemberName", eMSContent.updateid);
+            ViewBag.contenttype = new SelectList(db.ContentTypes, "ContentType1", "ContentType1", eMSContent.contenttype);
             return View(eMSContent);
         }
         
@@ -83,6 +85,7 @@ namespace acemsoncall.web.Controllers
             }
             ViewBag.registid = new SelectList(db.AspNetUsers, "Id", "MemberName", eMSContent.registid);
             ViewBag.updateid = new SelectList(db.AspNetUsers, "Id", "MemberName", eMSContent.updateid);
+            ViewBag.contenttype = new SelectList(db.ContentTypes, "ContentType1", "ContentType1", eMSContent.contenttype);
             return View(eMSContent);
         }
 
@@ -101,6 +104,7 @@ namespace acemsoncall.web.Controllers
             }
             ViewBag.registid = new SelectList(db.AspNetUsers, "Id", "MemberName", eMSContent.registid);
             ViewBag.updateid = new SelectList(db.AspNetUsers, "Id", "MemberName", eMSContent.updateid);
+            ViewBag.contenttype = new SelectList(db.ContentTypes, "ContentType1", "ContentType1", eMSContent.contenttype);
             return View(eMSContent);
         }
 

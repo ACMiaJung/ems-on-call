@@ -71,6 +71,12 @@
           <Property Name="IsCheckedIn" Type="bit" Nullable="false" />
           <Property Name="CheckedInDT" Type="datetime" />
         </EntityType>
+        <EntityType Name="ContentType">
+          <Key>
+            <PropertyRef Name="ContentType" />
+          </Key>
+          <Property Name="ContentType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="EMSContent">
           <Key>
             <PropertyRef Name="id" />
@@ -164,6 +170,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EMSContent_ContentType">
+          <End Role="ContentType" Type="Self.ContentType" Multiplicity="1" />
+          <End Role="EMSContent" Type="Self.EMSContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContentType">
+              <PropertyRef Name="ContentType" />
+            </Principal>
+            <Dependent Role="EMSContent">
+              <PropertyRef Name="contenttype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EMSMessage_EMSMessage_FROM">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="EMSMessage" Type="Self.EMSMessage" Multiplicity="*" />
@@ -195,6 +213,7 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContentType" EntityType="Self.ContentType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EMSContent" EntityType="Self.EMSContent" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -218,6 +237,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_EMSContent_AspNetUsers_updateid" Association="Self.FK_EMSContent_AspNetUsers_updateid">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="EMSContent" EntitySet="EMSContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMSContent_ContentType" Association="Self.FK_EMSContent_ContentType">
+            <End Role="ContentType" EntitySet="ContentType" />
             <End Role="EMSContent" EntitySet="EMSContent" />
           </AssociationSet>
           <AssociationSet Name="FK_EMSMessage_EMSMessage_FROM" Association="Self.FK_EMSMessage_EMSMessage_FROM">
@@ -357,6 +380,11 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="EMSMessage" EntitySet="EMSMessages" />
           </AssociationSet>
+          <EntitySet Name="ContentTypes" EntityType="acemsModel.ContentType" />
+          <AssociationSet Name="FK_EMSContent_ContentType" Association="acemsModel.FK_EMSContent_ContentType">
+            <End Role="ContentType" EntitySet="ContentTypes" />
+            <End Role="EMSContent" EntitySet="EMSContents" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="EMSContent">
           <Key>
@@ -372,6 +400,7 @@
           <Property Name="updatedt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AspNetUser" Relationship="acemsModel.FK_EMSContent_AspNetUsers_registid" FromRole="EMSContent" ToRole="AspNetUser" />
           <NavigationProperty Name="AspNetUser1" Relationship="acemsModel.FK_EMSContent_AspNetUsers_updateid" FromRole="EMSContent" ToRole="AspNetUser" />
+          <NavigationProperty Name="ContentType1" Relationship="acemsModel.FK_EMSContent_ContentType" FromRole="EMSContent" ToRole="ContentType" />
         </EntityType>
         <Association Name="FK_EMSContent_AspNetUsers_registid">
           <End Type="acemsModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
@@ -431,6 +460,25 @@
             </Principal>
             <Dependent Role="EMSMessage">
               <PropertyRef Name="MessageTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContentType">
+          <Key>
+            <PropertyRef Name="ContentType1" />
+          </Key>
+          <Property Name="ContentType1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EMSContents" Relationship="acemsModel.FK_EMSContent_ContentType" FromRole="ContentType" ToRole="EMSContent" />
+        </EntityType>
+        <Association Name="FK_EMSContent_ContentType">
+          <End Type="acemsModel.ContentType" Role="ContentType" Multiplicity="1" />
+          <End Type="acemsModel.EMSContent" Role="EMSContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContentType">
+              <PropertyRef Name="ContentType1" />
+            </Principal>
+            <Dependent Role="EMSContent">
+              <PropertyRef Name="contenttype" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -520,6 +568,13 @@
                 <ScalarProperty Name="MessageTo" ColumnName="MessageTo" />
                 <ScalarProperty Name="MessageFrom" ColumnName="MessageFrom" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContentTypes">
+            <EntityTypeMapping TypeName="acemsModel.ContentType">
+              <MappingFragment StoreEntitySet="ContentType">
+                <ScalarProperty Name="ContentType1" ColumnName="ContentType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

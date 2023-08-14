@@ -1,0 +1,25 @@
+﻿@using acemsoncall.web.Models.EntityModel
+@model List<EMSContent>
+@{
+    ViewBag.Title = "Location Look Up";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+
+<div>
+    @foreach (var location in Model)
+    {
+        <div>
+            <div class="title" style="font-size:24px;color:black;">
+                @location.title
+            </div>
+            <div class="content" style="color:#808080">
+                @Html.Raw(location.content)
+            </div>
+        </div>
+        <hr size="1" style="border-style:double;border-color:black;" />
+    }
+
+</div>

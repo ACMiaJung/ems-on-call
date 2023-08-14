@@ -25,5 +25,6 @@ namespace acemsoncall.web.Models.EntityModel
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
+        public virtual ContentType ContentType1 { get; set; }
     }
 }
