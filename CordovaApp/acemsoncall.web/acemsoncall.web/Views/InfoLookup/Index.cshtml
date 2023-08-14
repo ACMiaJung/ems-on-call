@@ -1,7 +1,7 @@
 ﻿@using acemsoncall.web.Models.EntityModel
 @model List<EMSContent>
 @{
-    ViewBag.Title = "Location Look Up";
+    ViewBag.Title = "Information Look Up";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -17,15 +17,15 @@
 <br />
 
 <div>
-    @foreach (var location in Model)
+    @foreach (var information in Model)
     {
         <div>
             <div class="title" style="font-size:24px;color:black;">
-                @location.title
+                @information.title
             </div>
             <div class="content" style="color:#808080">
 
-                @Html.Raw(location.content)
+                @Html.Raw(information.content)
 
             </div>
         </div>

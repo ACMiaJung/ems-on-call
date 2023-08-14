@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<acemsoncall.web.Models.EntityModel.EMSContent>
 
 @{
-    ViewBag.Title = "EMSContents";
+    ViewBag.Title = "Contents List";
 }
 
 <h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="/EMSContents/create" class="btn btn-primary">Add New Content</a>
 </p>
 <table class="table">
     <tr>
@@ -30,7 +30,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <a href="/EMSContents/Details/@item.id">@item.title</a>
+            <a href="/EMSContents/Details/@item.id"><u>@item.title</u></a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.contenttype)

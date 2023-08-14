@@ -21,6 +21,7 @@ namespace acemsoncall.web.Controllers
         public ActionResult Index()
         {
             var eMSContents = db.EMSContents.Include(e => e.AspNetUser).Include(e => e.AspNetUser1);
+            eMSContents = eMSContents.OrderByDescending(e => e.id).Include(e => e.AspNetUser).Include(e => e.AspNetUser1);
             return View(eMSContents.ToList());
         }
 

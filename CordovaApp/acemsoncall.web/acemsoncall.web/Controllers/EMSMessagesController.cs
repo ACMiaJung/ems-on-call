@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace acemsoncall.web.Controllers
 {
+    [Authorize]
     public class EMSMessagesController : Controller
     {
         private acemsEntities db = new acemsEntities();

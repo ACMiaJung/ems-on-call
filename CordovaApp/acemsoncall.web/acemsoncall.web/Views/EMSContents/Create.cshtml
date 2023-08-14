@@ -3,7 +3,7 @@
 @using Microsoft.AspNet.Identity
 @using acemsoncall.web.Models.EntityModel
 @{
-    ViewBag.Title = "Create EMS Content";
+    ViewBag.Title = "Add New Content";
     string memberName = string.Empty;
     string _userId = string.Empty;
     if (User.Identity.IsAuthenticated)
@@ -28,13 +28,15 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>EMSContent</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.contenttype, "Content Type", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <div class="inlineblock">@Html.DropDownList("contenttype", null, htmlAttributes: new { @class = "form-control" })</div> <a href="/contenttypes" class="btn btn-default">Manage Content Types</a>
+            <div class="inlineblock">@Html.DropDownList("contenttype", null, htmlAttributes: new { @class = "form-control" })</div>
+            <div class="clearfix"></div>
+            <br />
+            <a href="/contenttypes" class="btn btn-default">(Manage Content Types)</a>
             @Html.ValidationMessageFor(model => model.contenttype, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -55,7 +57,7 @@
         </div>
     </div>
     <div class="form-group">
-        Image: <input type="file" id="postcontentfile" name="ufile" onchange="insertImageToCK(event, 'content', 'postcontentfile');" accept=".jpg, .jpeg, .png" />
+        Image (width ~300px recommended): <input type="file" id="postcontentfile" name="ufile" onchange="insertImageToCK(event, 'content', 'postcontentfile');" accept=".jpg, .jpeg, .png" />
     </div>
 
     <div class="form-group">

@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.contenttype)
+            Content Type
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.title)
+            Title
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.content)
+            Content
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.registdt)
+            Date Registered
         </dt>
 
         <dd>
@@ -43,15 +43,22 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.updatedt)
+            Date Updated
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.updatedt)
+            @if (Model.updatedt != null)
+            {
+                @Html.DisplayFor(model => model.updatedt)
+            }
+            else
+            {
+                <p>None</p>
+            }
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser.MemberName)
+            Registered By
         </dt>
 
         <dd>
@@ -59,16 +66,23 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser1.MemberName)
+            Last Updated By
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AspNetUser1.MemberName)
+            @if (Model.AspNetUser1 != null)
+            {
+                @Html.DisplayFor(model => model.AspNetUser1.MemberName)
+            }
+            else
+            {
+                <p>None</p>
+            }
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="/emscontents/edit" class="btn btn-success" style="margin-right:15px;">Edit</a>
+    @Html.ActionLink("|  Back to List", "Index")
 </p>
