@@ -10,8 +10,11 @@ using acemsoncall.web.Models.EntityModel;
 
 namespace acemsoncall.web.Controllers
 {
+    [Authorize(Roles = "admin")]
+
     public class EMSContentsController : Controller
     {
+
         private acemsEntities db = new acemsEntities();
 
         // GET: EMSContents
