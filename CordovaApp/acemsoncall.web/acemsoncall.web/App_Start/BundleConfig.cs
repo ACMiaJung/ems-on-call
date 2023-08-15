@@ -40,8 +40,9 @@ namespace acemsoncall.web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
-                 "~/Content/acemsoncall.css",
-                 "~/Content/Site.css"));
+                                  "~/Content/Site.css",
+                 "~/Content/acemsoncall.css")
+);
         }
     }
 }

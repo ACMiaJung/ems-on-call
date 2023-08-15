@@ -71,7 +71,6 @@ namespace acemsoncall.web.Controllers
             ViewBag.contenttype = new SelectList(db.ContentTypes, "ContentType1", "ContentType1", eMSContent.contenttype);
             return View(eMSContent);
         }
-        
         // GET: EMSContents/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -95,6 +94,7 @@ namespace acemsoncall.web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "id,contenttype,title,content,registid,registdt,updateid,updatedt")] EMSContent eMSContent)
         {
             if (ModelState.IsValid)
