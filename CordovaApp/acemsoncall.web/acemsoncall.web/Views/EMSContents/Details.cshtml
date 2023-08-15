@@ -1,88 +1,91 @@
 ﻿@model acemsoncall.web.Models.EntityModel.EMSContent
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "EMS Content Details";
 }
 
-<h2>Details</h2>
+<h1 class="amatic">@ViewBag.Title</h1>
+<hr />
 
-<div>
-    <h4>EMSContent</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Content Type
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.contenttype)
-        </dd>
+<div class="statbox widget box box-shadow">
+    <div class="widget-content widget-content-area">
+        <dl class="dl-horizontal">
+            <dt>
+                Content Type
+            </dt>
 
-        <dt>
-            Title
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.contenttype)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.title)
-        </dd>
+            <dt>
+                Title
+            </dt>
 
-        <dt>
-            Content
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.title)
+            </dd>
 
-        <dd>
-            @Html.Raw(Model.content)
-        </dd>
+            <dt>
+                Content
+            </dt>
 
-        <dt>
-            Date Registered
-        </dt>
+            <dd>
+                @Html.Raw(Model.content)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.registdt)
-        </dd>
+            <dt>
+                Date Registered
+            </dt>
 
-        <dt>
-            Date Updated
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.registdt)
+            </dd>
 
-        <dd>
-            @if (Model.updatedt != null)
-            {
-                @Html.DisplayFor(model => model.updatedt)
-            }
-            else
-            {
-                <p>None</p>
-            }
-        </dd>
+            <dt>
+                Date Updated
+            </dt>
 
-        <dt>
-            Registered By
-        </dt>
+            <dd>
+                @if (Model.updatedt != null)
+                {
+                    @Html.DisplayFor(model => model.updatedt)
+                }
+                else
+                {
+                    <p>None</p>
+                }
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AspNetUser.MemberName)
-        </dd>
+            <dt>
+                Registered By
+            </dt>
 
-        <dt>
-            Last Updated By
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUser.MemberName)
+            </dd>
 
-        <dd>
-            @if (Model.AspNetUser1 != null)
-            {
-                @Html.DisplayFor(model => model.AspNetUser1.MemberName)
-            }
-            else
-            {
-                <p>None</p>
-            }
-        </dd>
+            <dt>
+                Last Updated By
+            </dt>
 
-    </dl>
+            <dd>
+                @if (Model.AspNetUser1 != null)
+                {
+                    @Html.DisplayFor(model => model.AspNetUser1.MemberName)
+                }
+                else
+                {
+                    <p>None</p>
+                }
+            </dd>
+
+        </dl>
+    </div>
 </div>
-<p>
+
+<p style="margin-top:20px;">
     <a href="/emscontents/edit/@Model.id" class="btn btn-success" style="margin-right:15px;">Edit</a>
     @Html.ActionLink("|  Back to List", "Index")
 </p>

@@ -10,14 +10,14 @@
         var user = db.AspNetUsers.FirstOrDefault(u => u.Id == _userId);
         MemberName = user == null ? string.Empty : user.MemberName;
         <main aria-labelledby="title">
-            <h2 id="title">@ViewBag.Title</h2>
+            <h2 id="title" class="space15">@ViewBag.Title</h2>
             <div class="row">
                 <div class="col-md-8">
                     <section id="loginForm">
                         @using (Html.BeginForm("CheckIn", "Shift", null, FormMethod.Post, new { role = "form" }))
                         {
                             @Html.AntiForgeryToken()
-                            <h4>Check In For Your Shift</h4>
+                            <h4 class="space25">Check In For Your Shift</h4>
                             <hr />
                             <h4 class="text-center text-primary">@ViewBag.Message</h4>
                             <div class="row">
@@ -45,7 +45,7 @@
                                     <input type="submit" value="Check out" class="btn btn-danger" @(user.IsCheckedIn==false?"disabled":string.Empty) />
                                     @if (user.IsCheckedIn)
                     {
-                        <a href="/shift/bagcheck" class="btn btn-warning">BAG CHECK</a>
+                        <a href="/shift/bagcheck" class="btn btn-success">BAG CHECK</a>
                     }
                                 </div>
                             </div>

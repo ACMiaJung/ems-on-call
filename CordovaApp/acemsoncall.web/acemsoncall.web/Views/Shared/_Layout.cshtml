@@ -11,13 +11,14 @@
 
 
         <!DOCTYPE html>
-        <html lang="en">
+        <html lang="en" style="background: #f7f7f9;">
         <head>
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-            <title>EMS On Call - The Ultimate ACEMS Apps</title>
+            <title>"Acems on Scene", the ultimate acems app</title>
             <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+            <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
             <link href="/assets/css/loader.css" rel="stylesheet" type="text/css" />
             <script src="/assets/js/loader.js"></script>
             <!-- BEGIN GLOBAL MANDATORY STYLES -->
@@ -47,13 +48,13 @@
                 <header class="header navbar navbar-expand-sm">
 
                     <ul class="navbar-nav theme-brand flex-row  text-center">
-                        <li class="nav-item theme-logo">
+                        <li class="nav-item theme-logo" style="margin-left:10px;margin-right:10px;">
                             <a href="/">
                                 <img src="/assets/img/default-profile-pic.jpg" class="navbar-logo" alt="logo">
                             </a>
                         </li>
-                        <li class="nav-item theme-text">
-                            <a href="/" class="nav-link" style="font-size:12px">EMS On Call </a>
+                        <li class="nav-item theme-text" style="min-width: 145px; margin-right: 5px;">
+                            <a href="/" class="nav-link" style="font-size:16px;">ACEMS on Scene</a>
                         </li>
                         <li class="nav-item toggle-sidebar">
                             <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg></a>
@@ -83,7 +84,7 @@
                         <li class="nav-item align-self-center search-animated">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search toggle-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                             <form class="form-inline search-full form-inline search" role="search">
-                                <div class="search-bar">
+                                <div class="search-bar" style="margin">
                                     <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search...">
                                 </div>
                             </form>
@@ -109,17 +110,20 @@
                             <div class="dropdown-menu p-0 position-absolute animated fadeInUp" aria-labelledby="messageDropdown">
                                 <div class="dropdown-item">
                                     <a href="/emsmessages">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>                                        <span>Inbox</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>                                        
+                                        <span style="margin-left:10px;">Inbox</span>
                                     </a>
                                 </div>
                                 <div class="dropdown-item">
                                     <a href="/emsmessages/create">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>                                        <span>Compose</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>                                        
+                                        <span style="margin-left:10px;">Compose</span>
                                     </a>
                                 </div>
                                 <div class="dropdown-item">
                                     <a href="/emsmessages/sent">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>                                        <span>Sent</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>                                        
+                                        <span style="margin-left:10px;">Sent</span>
                                     </a>
                                 </div>
 
@@ -311,7 +315,7 @@
                 <!--  BEGIN SIDEBAR  -->
                 <div class="sidebar-wrapper sidebar-theme">
 
-                    <nav id="sidebar">
+                    <nav id="sidebar" style="background: #f3f3f3;">
                         <div class="profile-info">
                             <figure class="user-cover-image"></figure>
                             <div class="user-info">
@@ -955,14 +959,7 @@
                         </div>
 
                     </div>
-                    <div class="footer-wrapper">
-                        @*<div class="footer-section f-section-1">
-                            <p class="">Copyright © 2020 <a target="_blank" href="https://designreset.com">DesignReset</a>, All rights reserved.</p>
-                        </div>
-                        <div class="footer-section f-section-2">
-                            <p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></p>
-                        </div>*@
-                    </div>
+                    
                 </div>
                 <!--  END CONTENT AREA  -->
 

@@ -92,7 +92,6 @@
                 <p>None</p>
             }
         </dd>
-        <br />
 
 
     </dl>
@@ -100,9 +99,8 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
+        <div class="form-actions no-color" style="margin-top:25px;">
             <input type="submit" value="Delete" class="btn btn-danger" /> 
-            <br />
             @Html.ActionLink("|  Back to List", "Index")
         </div>
     }

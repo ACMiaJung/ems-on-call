@@ -6,10 +6,12 @@
 
 <h2>@ViewBag.Title</h2>
 
-<p>
-    <a href="/EMSContents/create" class="btn btn-primary">Add New Content</a>
-</p>
-<table class="table">
+<div class="text-right">
+    <div class="inlineblock">
+            <a href="/EMSContents/create" class="btn btn-success">Add New Content</a>
+    </div>
+</div>
+<table class="table" style="margin-top:25px;">
     <tr>
         <th style="width:70%;">
             Title
@@ -30,7 +32,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <a href="/EMSContents/Details/@item.id"><u>@item.title</u></a>
+            <a href="/EMSContents/Details/@item.id" style="color: black; text-decoration: none; ">@item.title</a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.contenttype)
@@ -44,7 +46,7 @@
             }
         </td>
         <td>
-            @Html.ActionLink("🗑️", "Delete", new { id = item.id })
+            <a href="/EMSContents/Delete/@item.id" style="color: black; text-decoration: none;">🗑️</a>
         </td>
     </tr>
 }

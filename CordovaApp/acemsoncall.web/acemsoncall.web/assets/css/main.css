@@ -211,7 +211,6 @@ span.red {
     height: calc(1.4em + 1.4rem + 2px);
     padding: .75rem 1.25rem;
     border-radius: 6px;
-    margin-bottom: 25px; /*Mia added this!!!*/
 }
   .form-control[type="range"] {
     padding: 0; }
