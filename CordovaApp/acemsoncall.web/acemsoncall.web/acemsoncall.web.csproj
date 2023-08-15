@@ -223,9 +223,11 @@
     <Compile Include="Controllers\EMSContentsController.cs" />
     <Compile Include="Controllers\EMSMessagesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InfoLookupController.cs" />
     <Compile Include="Controllers\LocationLookupController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
+    <Compile Include="Controllers\PersonnelsController.cs" />
     <Compile Include="Controllers\ShiftController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,6 +267,9 @@
       <DependentUpon>acemsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EntityModel\EMSMessage.cs">
+      <DependentUpon>acemsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityModel\Personnel.cs">
       <DependentUpon>acemsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
@@ -1856,6 +1861,12 @@
     <Content Include="Views\ContentTypes\Edit.cshtml" />
     <Content Include="Views\ContentTypes\Index.cshtml" />
     <Content Include="Views\LocationLookup\Index.cshtml" />
+    <Content Include="Views\Personnels\Create.cshtml" />
+    <Content Include="Views\Personnels\Delete.cshtml" />
+    <Content Include="Views\Personnels\Details.cshtml" />
+    <Content Include="Views\Personnels\Edit.cshtml" />
+    <Content Include="Views\Personnels\Index.cshtml" />
+    <Content Include="Views\InfoLookup\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -202,15 +202,17 @@ span.red {
 
 /*      Form Control       */
 .form-control {
-  height: auto;
-  border: 1px solid #bfc9d4;
-  color: #3b3f5c;
-  font-size: 15px;
-  padding: 8px 10px;
-  letter-spacing: 1px;
-  height: calc(1.4em + 1.4rem + 2px);
-  padding: .75rem 1.25rem;
-  border-radius: 6px; }
+    height: auto;
+    border: 1px solid #bfc9d4;
+    color: #3b3f5c;
+    font-size: 15px;
+    padding: 8px 10px;
+    letter-spacing: 1px;
+    height: calc(1.4em + 1.4rem + 2px);
+    padding: .75rem 1.25rem;
+    border-radius: 6px;
+    margin-bottom: 25px; /*Mia added this!!!*/
+}
   .form-control[type="range"] {
     padding: 0; }
   .form-control:focus {

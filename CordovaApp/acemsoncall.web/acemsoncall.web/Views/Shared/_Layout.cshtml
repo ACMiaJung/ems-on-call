@@ -20,7 +20,6 @@
             <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
             <link href="/assets/css/loader.css" rel="stylesheet" type="text/css" />
             <script src="/assets/js/loader.js"></script>
-            @Styles.Render("~/Content/css")
             <!-- BEGIN GLOBAL MANDATORY STYLES -->
             <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap" rel="stylesheet">
             <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -30,6 +29,7 @@
             <link href="/plugins/apex/apexcharts.css" rel="stylesheet" type="text/css">
             <link href="/assets/css/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
             <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+            @Styles.Render("~/Content/css")
 
         </head>
         <body class="sidebar-noneoverflow">
@@ -350,7 +350,7 @@
                                     </div>
                                 </a>
                                 <ul class="collapse submenu recent-submenu mini-recent-submenu list-unstyled show" id="dashboard" data-parent="#accordionExample">
-                                    <li class="active">
+                                    <li>
                                         <a href="/shift/checkin"> Check In Here </a>
                                     </li>
                                     <li>
@@ -363,7 +363,7 @@
                             </li>
 
                             <li class="menu">
-                                <a href="#" aria-expanded="false" class="dropdown-toggle">
+                                <a href="/LocationLookup" aria-expanded="false" class="dropdown-toggle">
                                     <div class="">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                                         <span>Location Look Up</span>
@@ -371,9 +371,10 @@
                                 </a>
                             </li>
                             <li class="menu">
-                                <a href="#" aria-expanded="false" class="dropdown-toggle">
+                                <a href="/InfoLookup" aria-expanded="false" class="dropdown-toggle">
                                     <div class="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>                                <span>Info Look Up</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>                                
+                                        <span>Info Look Up</span>
                                     </div>
                                 </a>
                             </li>

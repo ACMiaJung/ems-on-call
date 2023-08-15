@@ -1,14 +1,15 @@
-﻿using acemsoncall.web.Models.EntityModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using acemsoncall.web.Models.EntityModel;
 using System.Data.Entity;
+
 
 namespace acemsoncall.web.Controllers
 {
-    public class LocationLookupController : Controller
+    public class InfoLookupController : Controller
     {
         private acemsEntities db = new acemsEntities();
 
@@ -20,11 +21,10 @@ namespace acemsoncall.web.Controllers
             }
             base.Dispose(disposing);
         }
-
-        // GET: LocationLookup
+        // GET: InfoLookup
         public ActionResult Index(string s)
         {
-            var eMSContents = db.EMSContents.Where(e => e.contenttype == "Location");
+            var eMSContents = db.EMSContents.Where(e => e.contenttype == "Information");
             if (string.IsNullOrEmpty(s) == false)
             {
                 eMSContents = eMSContents.Where(m => m.title.IndexOf(s) >= 0);

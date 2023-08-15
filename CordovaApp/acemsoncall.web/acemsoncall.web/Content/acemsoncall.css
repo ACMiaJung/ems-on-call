@@ -3,3 +3,14 @@
 .inlineblock {
     display:inline-block;
 }
+dt{
+    margin-bottom:15px;
+}
+
+.navbar{
+    padding:0;
+}
+
+#accordionExample a {
+    text-decoration:none;
+}

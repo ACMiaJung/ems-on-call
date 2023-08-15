@@ -10,108 +10,107 @@ using acemsoncall.web.Models.EntityModel;
 
 namespace acemsoncall.web.Controllers
 {
-    [Authorize(Roles = "admin")]
-    public class ContentTypesController : Controller
+    public class PersonnelsController : Controller
     {
         private acemsEntities db = new acemsEntities();
 
-        // GET: ContentTypes
+        // GET: Personnels
         public ActionResult Index()
         {
-            return View(db.ContentTypes.ToList());
+            return View(db.Personnels.ToList());
         }
 
-        // GET: ContentTypes/Details/5
-        public ActionResult Details(string id)
+        // GET: Personnels/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ContentType contentType = db.ContentTypes.Find(id);
-            if (contentType == null)
+            Personnel personnel = db.Personnels.Find(id);
+            if (personnel == null)
             {
                 return HttpNotFound();
             }
-            return View(contentType);
+            return View(personnel);
         }
 
-        // GET: ContentTypes/Create
+        // GET: Personnels/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ContentTypes/Create
+        // POST: Personnels/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ContentType1")] ContentType contentType)
+        public ActionResult Create([Bind(Include = "id,Name,Email,Rank,PhoneNumber")] Personnel personnel)
         {
             if (ModelState.IsValid)
             {
-                db.ContentTypes.Add(contentType);
+                db.Personnels.Add(personnel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(contentType);
+            return View(personnel);
         }
 
-        // GET: ContentTypes/Edit/5
-        public ActionResult Edit(string id)
+        // GET: Personnels/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ContentType contentType = db.ContentTypes.Find(id);
-            if (contentType == null)
+            Personnel personnel = db.Personnels.Find(id);
+            if (personnel == null)
             {
                 return HttpNotFound();
             }
-            return View(contentType);
+            return View(personnel);
         }
 
-        // POST: ContentTypes/Edit/5
+        // POST: Personnels/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ContentType1")] ContentType contentType)
+        public ActionResult Edit([Bind(Include = "id,Name,Email,Rank,PhoneNumber")] Personnel personnel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(contentType).State = EntityState.Modified;
+                db.Entry(personnel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(contentType);
+            return View(personnel);
         }
 
-        // GET: ContentTypes/Delete/5
-        public ActionResult Delete(string id)
+        // GET: Personnels/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ContentType contentType = db.ContentTypes.Find(id);
-            if (contentType == null)
+            Personnel personnel = db.Personnels.Find(id);
+            if (personnel == null)
             {
                 return HttpNotFound();
             }
-            return View(contentType);
+            return View(personnel);
         }
 
-        // POST: ContentTypes/Delete/5
+        // POST: Personnels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            ContentType contentType = db.ContentTypes.Find(id);
-            db.ContentTypes.Remove(contentType);
+            Personnel personnel = db.Personnels.Find(id);
+            db.Personnels.Remove(personnel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

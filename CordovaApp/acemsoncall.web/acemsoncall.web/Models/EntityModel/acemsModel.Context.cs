@@ -32,5 +32,6 @@ namespace acemsoncall.web.Models.EntityModel
         public virtual DbSet<EMSContent> EMSContents { get; set; }
         public virtual DbSet<EMSMessage> EMSMessages { get; set; }
         public virtual DbSet<ContentType> ContentTypes { get; set; }
+        public virtual DbSet<Personnel> Personnels { get; set; }
     }
 }

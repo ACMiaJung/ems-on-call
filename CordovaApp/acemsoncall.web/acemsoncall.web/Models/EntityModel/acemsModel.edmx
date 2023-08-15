@@ -16,6 +16,16 @@
           <Property Name="MessageText" Type="nvarchar(max)" Nullable="false" />
           <Property Name="MessageTimeSent" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Personnel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Rank" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -208,6 +218,7 @@
         </Association>
         <EntityContainer Name="acemsModelStoreContainer">
           <EntitySet Name="EMSMessage" EntityType="Self.EMSMessage" Schema="acems" store:Type="Tables" />
+          <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="acems" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
@@ -385,6 +396,7 @@
             <End Role="ContentType" EntitySet="ContentTypes" />
             <End Role="EMSContent" EntitySet="EMSContents" />
           </AssociationSet>
+          <EntitySet Name="Personnels" EntityType="acemsModel.Personnel" />
           </EntityContainer>
         <EntityType Name="EMSContent">
           <Key>
@@ -482,6 +494,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Personnel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Rank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -575,6 +597,17 @@
             <EntityTypeMapping TypeName="acemsModel.ContentType">
               <MappingFragment StoreEntitySet="ContentType">
                 <ScalarProperty Name="ContentType1" ColumnName="ContentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personnels">
+            <EntityTypeMapping TypeName="acemsModel.Personnel">
+              <MappingFragment StoreEntitySet="Personnel">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

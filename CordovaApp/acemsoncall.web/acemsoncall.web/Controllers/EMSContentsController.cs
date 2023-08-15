@@ -10,14 +10,18 @@ using acemsoncall.web.Models.EntityModel;
 
 namespace acemsoncall.web.Controllers
 {
+    [Authorize(Roles = "admin")]
+
     public class EMSContentsController : Controller
     {
+
         private acemsEntities db = new acemsEntities();
 
         // GET: EMSContents
         public ActionResult Index()
         {
             var eMSContents = db.EMSContents.Include(e => e.AspNetUser).Include(e => e.AspNetUser1);
+            eMSContents = eMSContents.OrderByDescending(e => e.id).Include(e => e.AspNetUser).Include(e => e.AspNetUser1);
             return View(eMSContents.ToList());
         }
 
@@ -67,7 +71,6 @@ namespace acemsoncall.web.Controllers
             ViewBag.contenttype = new SelectList(db.ContentTypes, "ContentType1", "ContentType1", eMSContent.contenttype);
             return View(eMSContent);
         }
-        
         // GET: EMSContents/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -91,6 +94,7 @@ namespace acemsoncall.web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "id,contenttype,title,content,registid,registdt,updateid,updatedt")] EMSContent eMSContent)
         {
             if (ModelState.IsValid)

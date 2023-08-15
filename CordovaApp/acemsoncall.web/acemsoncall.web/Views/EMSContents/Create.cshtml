@@ -3,7 +3,7 @@
 @using Microsoft.AspNet.Identity
 @using acemsoncall.web.Models.EntityModel
 @{
-    ViewBag.Title = "Create EMS Content";
+    ViewBag.Title = "Add New Content (Admin Only)";
     string memberName = string.Empty;
     string _userId = string.Empty;
     if (User.Identity.IsAuthenticated)
@@ -28,15 +28,18 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>EMSContent</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
+    <div class="form-group" style="margin-bottom:15px;">
         @Html.LabelFor(model => model.contenttype, "Content Type", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="inlineblock">@Html.DropDownList("contenttype", null, htmlAttributes: new { @class = "form-control" })</div> <a href="/contenttypes" class="btn btn-default">Manage Content Types</a>
-            @Html.ValidationMessageFor(model => model.contenttype, "", new { @class = "text-danger" })
+        <div style="margin-bottom:30px;">
+            <div class="col-md-10">
+                <div class="inlineblock">@Html.DropDownList("contenttype", null, htmlAttributes: new { @class = "form-control" })</div>
+                <a href="/contenttypes" class="btn btn-default">(Manage Content Types)</a>
+                @Html.ValidationMessageFor(model => model.contenttype, "", new { @class = "text-danger" })
+            </div>
         </div>
+        
     </div>
 
     <div class="form-group">
@@ -54,9 +57,12 @@
             @Html.ValidationMessageFor(model => model.content, "", new { @class = "text-danger" })
         </div>
     </div>
+    <br />
     <div class="form-group">
-        Image: <input type="file" id="postcontentfile" name="ufile" onchange="insertImageToCK(event, 'content', 'postcontentfile');" accept=".jpg, .jpeg, .png" />
+        <p style="margin-left:20px;">Image (width around 300px recommended):</p> 
+        <input style="margin-left:20px;" type="file" id="postcontentfile" name="ufile" onchange="insertImageToCK(event, 'content', 'postcontentfile');" accept=".jpg, .jpeg, .png" />
     </div>
+    <br />
 
     <div class="form-group">
         @Html.LabelFor(model => model.registid, "Name of Registerer", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -68,15 +74,14 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Submit" class="btn btn-default" />
+            <input type="submit" value="Submit" class="btn btn-primary" style="margin-right:15px;"/>
+            @Html.ActionLink("| Back to List", "Index")
         </div>
     </div>
 </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 @section Scripts {
 
     <script src="~/Scripts/ckeditor/ckeditor.js"></script>
