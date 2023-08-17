@@ -34,13 +34,13 @@ textarea {
 /* Common styles for all buttons */
 .my_button {
     padding: 100px 50px;
-    width: 310px;
+    text-decoration: none;
+    width: 330px;
     border: none;
     border-radius: 5px;
-    font-weight: bold;
     transition: background-color 0.3s ease;
     display: block;
-    margin: 5px;
+    margin: 7px 15px;
     font-size: 16px;
     cursor: pointer;
     background-color: #6a82bc;

@@ -4,16 +4,16 @@
     ViewBag.Title = "Personnel List";
 }
 
-<h2>@ViewBag.Title</h2>
+<h1 class="amatic" style="margin-left:5px;margin-bottom:20px;">@ViewBag.Title</h1>
 
-<p>
-    <a href="/personnels/create" class="btn btn-primary">Add New Personnel</a>
-</p>
+@*<p>
+        <a href="/personnels/create" class="btn btn-primary">Add New Personnel</a>
+    </p>*@
 
 <div class="widget widget-table-two">
 
     <div class="widget-heading">
-        <h5 class="">Active Members</h5>
+        <h5 class="" style="margin-top: 5px; margin-bottom: 5px; color:blue;">Active Members:</h5>
     </div>
 
     <div class="widget-content">
@@ -59,26 +59,26 @@
         <th></th>
     </tr>
 
-@*@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rank)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}*@
+    @*@foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rank)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                </td>
+            </tr>
+        }*@
 
 </table>

@@ -717,7 +717,7 @@
 }
 .widget-table-two .table > tbody > tr > td:first-child {
     border-top-left-radius: 6px;
-    padding: 10px 0 10px 15px;
+    padding: 10px 0 10px 0;
 }
 .widget-table-two .table > tbody > tr > td:first-child {
     border-bottom-left-radius: 6px;
