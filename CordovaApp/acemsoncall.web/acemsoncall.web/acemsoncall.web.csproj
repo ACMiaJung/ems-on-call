@@ -366,11 +366,13 @@
     <Content Include="assets\img\640x426.jpg" />
     <Content Include="assets\img\90x90.jpg" />
     <Content Include="assets\img\ab-1.jpeg" />
+    <Content Include="assets\img\acems-logo-2.png" />
     <Content Include="assets\img\arrow-down.png" />
     <Content Include="assets\img\bg.png" />
     <Content Include="assets\img\ca.png" />
     <Content Include="assets\img\contact-us-map-pin.svg" />
     <Content Include="assets\img\de.png" />
+    <Content Include="assets\img\default-profile-pic.jpg" />
     <Content Include="assets\img\faq.svg" />
     <Content Include="assets\img\favicon.ico" />
     <Content Include="assets\img\fr.png" />
@@ -515,6 +517,7 @@
     <Content Include="icons-glyphicons-pro.html" />
     <Content Include="icons-simple-line-icons.html" />
     <Content Include="icons-social.html" />
+    <Content Include="images\ACEMS-logo-2023-primary-blue.png" />
     <Content Include="images\loginbg.gif" />
     <Content Include="images\main_logo.png" />
     <Content Include="layout.html" />
